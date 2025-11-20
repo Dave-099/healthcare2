@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HealthCare Connect — Modern</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- AOS (Animate On Scroll) -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Swiper (carousel) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+  <style>
+    :root{
+      --blue:#0466c8;
+      --green:#00b894;
+      --muted:#6c757d;
+      --glass: rgba(255,255,255,0.85);
+      --card: linear-gradient(135deg, rgba(4,102,200,0.06), rgba(0,184,148,0.03));
+    }
+    html,body{height:100%}
+    body{
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color: #222;
+      background: linear-gradient(180deg, #f7fbff 0%, #ffffff 100%);
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background: linear-gradient(90deg, rgba(4,102,200,0.95), rgba(0,184,148,0.95));
+      box-shadow: 0 6px 20px rgba(4,102,200,0.08);
+    }
+    .navbar .nav-link { color: rgba(255,255,255,0.95) !important; font-weight:600; }
+    .navbar-brand { color: white !important; font-weight:800; letter-spacing:0.2px; }
+
+    /* HERO */
+    .hero {
+      min-height: 90vh;
+      display: grid;
+      grid-template-columns: 1fr 520px;
+      gap: 2.5rem;
+      align-items: center;
+      padding: 5rem 2rem 3rem;
+    }
+    .hero-card {
+      background: rgba(255,255,255,0.9);
+      border-radius: 18px;
+      padding: 2.2rem;
+      box-shadow: 0 10px 35px rgba(10,30,60,0.06);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(10,30,60,0.04);
+    }
+    .hero h1{
+      font-size: clamp(1.9rem, 2.8vw, 2.8rem);
+      line-height: 1.05;
+      color: var(--blue);
+      margin-bottom: .6rem;
+    }
+    .typed {
+      color: var(--green);
+      font-weight:700;
+    }
+    .hero p{ color: var(--muted); margin-bottom:1.25rem; }
+
+    .hero-visual {
+      height: 100%;
+      border-radius: 18px;
+      overflow: hidden;
+      display:flex;
+      align-items: center;
+      justify-content:center;
+      position:relative;
+      box-shadow: 0 15px 50px rgba(8,40,80,0.08);
+    }
+    .hero-visual img { width:100%; height:100%; object-fit:cover; display:block; }
+
+    /* Feature cards (grid) */
+    .features-grid { margin-top: 1.6rem; display:grid; grid-template-columns: repeat(auto-fit,minmax(210px,1fr)); gap:1rem; }
+    .feature {
+      border-radius:12px;
+      background:var(--card);
+      padding:1.1rem;
+      display:flex;
+      gap:0.9rem;
+      align-items:flex-start;
+      transition: transform .28s ease, box-shadow .28s ease;
+      border:1px solid rgba(0,0,0,0.03);
+    }
+    .feature:hover{ transform: translateY(-8px); box-shadow: 0 12px 30px rgba(10,30,60,0.06); }
+    .feature .icon {
+      font-size:1.6rem;
+      color:var(--blue);
+      background: linear-gradient(180deg, rgba(4,102,200,0.12), rgba(0,184,148,0.06));
+      border-radius:10px;
+      padding:0.6rem;
+      display:grid;
+      place-items:center;
+    }
+    .feature h6{ margin:0; font-weight:700; color: #0c3b66; }
+    .feature p{ margin:0; color:var(--muted); font-size:0.95rem; }
+
+    /* STATS */
+    .stats {
+      display:flex;
+      gap:1rem;
+      flex-wrap:wrap;
+      justify-content:center;
+      align-items:center;
+      margin-top: 1rem;
+    }
+    .stat {
+      background:white;
+      border-radius:12px;
+      padding:1rem 1.25rem;
+      min-width:140px;
+      text-align:center;
+      box-shadow: 0 10px 30px rgba(10,30,60,0.04);
+      border: 1px solid rgba(10,30,60,0.03);
+    }
+    .stat .num { font-size:1.6rem; font-weight:800; color:var(--blue); }
+    .stat .label { color:var(--muted); font-size:0.9rem; margin-top:6px; }
+
+    /* WHY CHOOSE US - infographic cards */
+    .why-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:1.2rem; align-items:center; }
+    .why-visual {
+      background: linear-gradient(135deg, rgba(4,102,200,0.06), rgba(0,184,148,0.04));
+      border-radius:14px;
+      padding:1.4rem;
+    }
+    .why-visual img{ width:100%; border-radius:10px; }
+
+    /* TESTIMONIALS */
+    .swiper { padding:1rem 0.5rem 2.5rem; }
+    .testimonial-card{
+      background:white;
+      border-radius:12px;
+      padding:1.15rem;
+      box-shadow: 0 10px 40px rgba(12,40,80,0.06);
+      border:1px solid rgba(10,30,60,0.03);
+    }
+    .testimonial-card p { font-style:italic; color: #243447; }
+    .testimonial-card .meta { margin-top:10px; display:flex; gap:10px; align-items:center; }
+
+    /* BLOG PREVIEW */
+    .card-blog { border-radius:12px; overflow:hidden; border: none; box-shadow: 0 12px 40px rgba(10,30,60,0.05); }
+    .card-blog img{ height:180px; object-fit:cover; width:100%; }
+
+    /* CTA */
+    .big-cta {
+      background: linear-gradient(90deg, rgba(4,102,200,0.95), rgba(0,184,148,0.95));
+      color:white;
+      padding:2.2rem;
+      border-radius:14px;
+      text-align:center;
+      margin-top:1.4rem;
+    }
+    .big-cta h3{ font-weight:800; margin-bottom:0.5rem; }
+    .big-cta p{ margin-bottom:1rem; color:rgba(255,255,255,0.9); }
+
+    /* FOOTER */
+    footer{ margin-top:3rem; background:#04293a; color:rgba(255,255,255,0.85); padding:2.6rem 1rem; border-top:4px solid rgba(0,184,148,0.06); }
+    footer a{ color: rgba(255,255,255,0.9); text-decoration:none; }
+    .footer-col h6{ color:#fff; font-weight:700; margin-bottom:1rem; }
+
+    /* responsive tweaks */
+    @media (max-width: 991px){
+      .hero { grid-template-columns: 1fr; padding-top:6rem; gap:1.25rem; }
+      .hero-visual { height: 420px; }
+      .why-grid{ grid-template-columns: 1fr; }
+      .hero-card{ padding:1.25rem }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg py-3">
+    <div class="container">
+      <a class="navbar-brand" href="#">HealthCare Connect</a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+        <span class="navbar-toggler-icon" style="filter:invert(1);"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link px-3" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="doctors.html">Doctors</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="appointment.html">Appointment</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="contact.html">Contact</a></li>
+          <li class="nav-item ms-lg-3"><a class="btn btn-light btn-sm" href="appointment.html">Book Now</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero container">
+    <div class="hero-card" data-aos="fade-up" data-aos-duration="900">
+      <div class="d-flex align-items-start gap-3">
+        <div>
+          <span class="badge rounded-pill" style="background:linear-gradient(90deg,var(--blue),var(--green)); color:white;">Trusted · Fast · Secure</span>
+        </div>
+      </div>
+
+      <h1>
+        Healthcare that reduces queues — <span class="typed" id="typed-hero"></span>
+      </h1>
+
+      <p>
+        A modern patient-first platform that lets you consult specialists online, book appointments, get digital prescriptions, and access medical records — all in one secure place.
+      </p>
+
+      <div class="d-flex gap-2 flex-wrap">
+        <a class="btn btn-primary btn-lg" href="appointment.html"><i class="bi bi-calendar-check"></i> Book Appointment</a>
+        <a class="btn btn-outline-primary btn-lg" href="services.html"><i class="bi bi-info-circle"></i> Our Services</a>
+      </div>
+
+      <!-- features row -->
+      <div class="features-grid mt-4" data-aos="fade-up" data-aos-duration="900" data-aos-delay="200">
+        <div class="feature">
+          <div class="icon"><i class="bi bi-camera-video"></i></div>
+          <div>
+            <h6>Video & Chat Consult</h6>
+            <p>Secure real-time consultations with certified specialists.</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="icon"><i class="bi bi-clock-history"></i></div>
+          <div>
+            <h6>Reduce Waiting Time</h6>
+            <p>Smart scheduling to minimize in-hospital crowding.</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="icon"><i class="bi bi-file-earmark-medical"></i></div>
+          <div>
+            <h6>Digital Prescriptions</h6>
+            <p>Get prescriptions instantly after consultation.</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="icon"><i class="bi bi-shield-lock"></i></div>
+          <div>
+            <h6>Data Privacy</h6>
+            <p>HIPAA-like best practices for secure patient data.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- stats -->
+      <div class="stats mt-4" data-aos="fade-up" data-aos-duration="900" data-aos-delay="400">
+        <div class="stat">
+          <div class="num" data-target="5214">0</div>
+          <div class="label">Patients Served</div>
+        </div>
+        <div class="stat">
+          <div class="num" data-target="382">0</div>
+          <div class="label">Verified Doctors</div>
+        </div>
+        <div class="stat">
+          <div class="num" data-target="98">0</div>
+          <div class="label">Avg. Satisfaction (%)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- visual -->
+    <div class="hero-visual" data-aos="zoom-in" data-aos-duration="1000">
+      <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=1200&q=80" alt="Healthcare visual" />
+      <!-- subtle floating design elements -->
+      <svg style="position:absolute; left:12%; top:8%; transform:translate(-20%,-10%);" width="120" height="120" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#00c48a"/><stop offset="1" stop-color="#0466c8"/></linearGradient></defs>
+        <circle cx="90" cy="60" r="45" fill="url(#g1)" opacity="0.08"></circle>
+      </svg>
+    </div>
+  </header>
+
+  <!-- WHY CHOOSE US -->
+  <section class="container" style="padding-top:1.8rem;">
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="section-title">
+          <h2 style="color:var(--blue);">Why HealthCare Connect?</h2>
+          <p class="text-muted">We design workflows to keep patients healthy without the stress of long hospital queues. Some of our standout capabilities:</p>
+        </div>
+
+        <div class="why-grid">
+          <div>
+            <ul class="list-unstyled">
+              <li class="d-flex gap-3 mb-3">
+                <div class="icon"><i class="bi bi-speedometer2"></i></div>
+                <div>
+                  <strong>Fast Triage</strong>
+                  <div class="text-muted">Smart pre-consult intake to prioritize urgent cases.</div>
+                </div>
+              </li>
+
+              <li class="d-flex gap-3 mb-3">
+                <div class="icon"><i class="bi bi-people"></i></div>
+                <div>
+                  <strong>Care Coordination</strong>
+                  <div class="text-muted">Seamless transfer between doctors & departments when needed.</div>
+                </div>
+              </li>
+
+              <li class="d-flex gap-3 mb-3">
+                <div class="icon"><i class="bi bi-wallet2"></i></div>
+                <div>
+                  <strong>Insurance Friendly</strong>
+                  <div class="text-muted">Upload claims & prescriptions for quick reimbursement.</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="why-visual" data-aos="fade-left">
+            <img src="https://i.pinimg.com/736x/57/0b/d7/570bd7fb2413980872bc0187768d0326.jpg" alt="Why choose us" />
+          </div>
+        </div>
+      </div>
+
+      <!-- quick callout -->
+      <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="150">
+        <div class="hero-card">
+          <h5 style="color:var(--blue);">Smart Queue Reduction</h5>
+          <p class="text-muted">Our combination of virtual consults, triage forms, and scheduled check-ins reduces walk-in load — lowering cross-infection risk and improving patient flow.</p>
+
+          <ul class="list-unstyled mt-3">
+            <li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i>Pre-visit triage forms</li>
+            <li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i>Doctor availability map</li>
+            <li class="mb-2"><i class="bi bi-check2-circle text-success me-2"></i>Smart rescheduling & reminders</li>
+          </ul>
+
+          <a href="services.html" class="btn btn-outline-primary mt-3">Explore Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS (Swiper) -->
+  <section class="container mt-5">
+    <div class="section-title text-center mb-4">
+      <h2 style="color:var(--blue);">Trusted by Patients</h2>
+      <p class="text-muted">Real stories from people who experienced less waiting and better care.</p>
+    </div>
+
+    <div class="swiper" data-aos="fade-up">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="testimonial-card p-3">
+            <p>"I had a same-day online consult and got medication the same evening. The platform saved me a full day of hospital waiting!"</p>
+            <div class="meta">
+              <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="" class="rounded-circle" width="44" height="44">
+              <div>
+                <strong>Grace E.</strong><br><small class="text-muted">Teacher</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="testimonial-card p-3">
+            <p>"Our clinic integrated their scheduling and it significantly reduced crowding at our outpatient center."</p>
+            <div class="meta">
+              <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="" class="rounded-circle" width="44" height="44">
+              <div>
+                <strong>Dr. K. Mensah</strong><br><small class="text-muted">General Practitioner</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="testimonial-card p-3">
+            <p>"The prescription feature made it easy to get my meds without stepping into a crowded pharmacy."</p>
+            <div class="meta">
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="" class="rounded-circle" width="44" height="44">
+              <div>
+                <strong>Mary A.</strong><br><small class="text-muted">Content Creator</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- navigation -->
+      <div class="d-flex justify-content-center gap-2 mt-3">
+        <div class="swiper-button-prev" style="color:var(--blue);"></div>
+        <div class="swiper-button-next" style="color:var(--blue);"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG / TIPS -->
+  <section class="container mt-5">
+    <div class="section-title text-center mb-4">
+      <h2 style="color:var(--blue);">Health Tips & News</h2>
+      <p class="text-muted">Latest from our medical team — quick reads to keep you healthy.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="50">
+        <div class="card card-blog">
+          <img src="https://i.pinimg.com/1200x/a5/a0/c1/a5a0c145019470a16fa7efcf80b6355f.jpg" alt="blog" />
+          <div class="card-body">
+            <h5 class="card-title">5 Ways to Strengthen Immunity</h5>
+            <p class="card-text text-muted">Simple daily habits recommended by our nutritionists to support immune health.</p>
+            <a href="#" class="stretched-link">Read more</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="150">
+        <div class="card card-blog">
+          <img src="https://i.pinimg.com/736x/d0/86/75/d0867596c753fb7937303af9db227b51.jpg" alt="blog" />
+          <div class="card-body">
+            <h5 class="card-title">How Virtual Visits Improve Triage</h5>
+            <p class="card-text text-muted">See how pre-screening reduces unnecessary hospital visits for non-urgent cases.</p>
+            <a href="#" class="stretched-link">Read more</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="250">
+        <div class="card card-blog">
+          <img src="https://i.pinimg.com/736x/a2/aa/c0/a2aac0d118ff7439b4724771c2a65370.jpg" alt="blog" />
+          <div class="card-body">
+            <h5 class="card-title">Prescription Safety Tips</h5>
+            <p class="card-text text-muted">Important guidance for handling digital prescriptions and medications.</p>
+            <a href="#" class="stretched-link">Read more</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="container mt-5">
+    <div class="big-cta" data-aos="zoom-in">
+      <h3>Ready to skip the queue and get care faster?</h3>
+      <p>Sign up today — consult online, book follow-ups, and receive prescriptions without the wait.</p>
+      <a class="btn btn-light btn-lg" href="appointment.html"><i class="bi bi-calendar-check"></i> Get Started</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-md-4 footer-col">
+          <h6>HealthCare Connect</h6>
+          <p class="small text-muted">We help hospitals manage patient flow while giving patients fast, secure access to care from home.</p>
+          <div class="mt-2">
+            <a class="me-2" href="#"><i class="bi bi-facebook"></i></a>
+            <a class="me-2" href="#"><i class="bi bi-twitter"></i></a>
+            <a class="me-2" href="#"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-md-2 footer-col">
+          <h6>Company</h6>
+          <ul class="list-unstyled small">
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="doctors.html">Doctors</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-3 footer-col">
+          <h6>Contact</h6>
+          <p class="small mb-1">Clinic HQ, 12 Health St, Lagos</p>
+          <p class="small mb-1">Phone: +234 800 123 4567</p>
+          <p class="small">Email: hello@healthcareconnect.example</p>
+        </div>
+
+        <div class="col-md-3 footer-col">
+          <h6>Newsletter</h6>
+          <p class="small text-muted">Get health tips & service updates.</p>
+          <form class="d-flex" onsubmit="return false;">
+            <input class="form-control form-control-sm me-2" placeholder="Email address" aria-label="Email">
+            <button class="btn btn-success btn-sm">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="text-center pt-4 small">&copy; 2025 HealthCare Connect — All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS: Bootstrap, AOS, Swiper, Typed -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+  <script>
+    // initialize AOS
+    AOS.init({ once: true, duration: 800 });
+
+    // typed.js hero line
+    new Typed('#typed-hero', {
+      strings: ['Telemedicine', 'Fast Triage', 'Digital Prescriptions'],
+      typeSpeed: 60,
+      backSpeed: 30,
+      backDelay: 1400,
+      startDelay: 300,
+      smartBackspace: true,
+      loop: true
+    });
+
+    // swiper for testimonials
+    const swiper = new Swiper('.swiper', {
+      loop: true,
+      slidesPerView: 1,
+      spaceBetween: 20,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      },
+      breakpoints: {
+        768: { slidesPerView: 2 },
+        1200: { slidesPerView: 3 }
+      }
+    });
+
+    // animated counters (intersection observer)
+    const counters = document.querySelectorAll('.num');
+    const speed = 1600;
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const update = () => {
+            const target = +el.getAttribute('data-target');
+            const current = +el.innerText.replace(/\D/g,'') || 0;
+            const increment = Math.ceil(target / (speed / 30));
+            if (current < target) {
+              el.innerText = current + increment;
+              setTimeout(update, 30);
+            } else {
+              el.innerText = target + (el.getAttribute('data-suffix') || '');
+            }
+          };
+          update();
+          obs.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(c => obs.observe(c));
+  </script>
+</body>
+</html>

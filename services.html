@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Our Services — HealthCare Connect</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    :root{ --blue:#0466c8; --green:#00b894; --muted:#6c757d; }
+    body{ font-family:"Inter",sans-serif; background:#f8fbff; color:#222; }
+    .navbar{ background:linear-gradient(90deg,rgba(4,102,200,.95),rgba(0,184,148,.95)); }
+    .navbar .nav-link{ color:#fff!important; font-weight:600; }
+    .navbar-brand{ color:white!important; font-weight:800; }
+    h2{ color:var(--blue); font-weight:700; }
+    footer{ margin-top:3rem; background:#04293a; color:rgba(255,255,255,0.85); padding:2.6rem 1rem; }
+    footer a{ color:#fff; text-decoration:none; }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg py-3">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">HealthCare Connect</a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+      <span class="navbar-toggler-icon" style="filter:invert(1);"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navmenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link px-3" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link px-3" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link px-3 active" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link px-3" href="doctors.html">Doctors</a></li>
+        <li class="nav-item"><a class="nav-link px-3" href="appointment.html">Appointment</a></li>
+        <li class="nav-item"><a class="nav-link px-3" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header class="container text-center py-5">
+  <h1 class="fw-bold" style="color:var(--blue);" data-aos="fade-up">Our Healthcare Services</h1>
+  <p class="text-muted lead" data-aos="fade-up" data-aos-delay="150">
+    We provide a wide range of medical and digital health solutions designed to serve you better.
+  </p>
+</header>
+
+<!-- SERVICES GRID -->
+<section class="container py-5">
+  <div class="row g-4">
+    <div class="col-md-4" data-aos="zoom-in">
+      <div class="p-4 bg-white rounded shadow-sm h-100 text-center">
+        <i class="bi bi-clipboard2-pulse fs-1 text-primary"></i>
+        <h5 class="mt-3">General Consultation</h5>
+        <p class="text-muted">Book quick appointments with experienced doctors for diagnosis and treatment.</p>
+      </div>
+    </div>
+    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+      <div class="p-4 bg-white rounded shadow-sm h-100 text-center">
+        <i class="bi bi-capsule-pill fs-1 text-success"></i>
+        <h5 class="mt-3">E-Prescriptions</h5>
+        <p class="text-muted">Get secure, paperless prescriptions delivered to your email or pharmacy.</p>
+      </div>
+    </div>
+    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+      <div class="p-4 bg-white rounded shadow-sm h-100 text-center">
+        <i class="bi bi-laptop fs-1 text-info"></i>
+        <h5 class="mt-3">Telemedicine</h5>
+        <p class="text-muted">Consult with specialists virtually from the comfort of your home.</p>
+      </div>
+    </div>
+
+    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+      <div class="p-4 bg-white rounded shadow-sm h-100 text-center">
+        <i class="bi bi-heart-pulse fs-1 text-danger"></i>
+        <h5 class="mt-3">Cardiology</h5>
+        <p class="text-muted">Expert heart check-ups, monitoring, and treatment plans tailored for you.</p>
+      </div>
+    </div>
+    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="400">
+      <div class="p-4 bg-white rounded shadow-sm h-100 text-center">
+        <i class="bi bi-eye fs-1 text-warning"></i>
+        <h5 class="mt-3">Eye Care</h5>
+        <p class="text-muted">Full vision tests and advanced eye care services with modern equipment.</p>
+      </div>
+    </div>
+    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="500">
+      <div class="p-4 bg-white rounded shadow-sm h-100 text-center">
+        <i class="bi bi-activity fs-1 text-secondary"></i>
+        <h5 class="mt-3">Diagnostics</h5>
+        <p class="text-muted">Access labs and diagnostic tests with quick and reliable results.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="container text-center py-5">
+  <h2 data-aos="fade-up">Need a Specialist?</h2>
+  <p class="text-muted mb-4" data-aos="fade-up" data-aos-delay="100">
+    Book a session with top-rated doctors across different fields of medicine.
+  </p>
+  <a href="appointment.html" class="btn btn-primary btn-lg" data-aos="fade-up" data-aos-delay="200">
+    Book Appointment
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container text-center small">
+    <p>&copy; 2025 HealthCare Connect — All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>AOS.init({once:true});</script>
+</body>
+</html>
